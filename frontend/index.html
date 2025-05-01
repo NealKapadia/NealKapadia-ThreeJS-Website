@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Neal Kapadia - Computer Engineering student at UT Dallas with a passion for integrating technology and healthcare">
+    <title>Neal Kapadia | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  </head>
+
+  <canvas id="bg"></canvas>
+
+  <body>
+    <div id="app"></div>
+    <nav>
+      <div class="logo">NK</div>
+      <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero">
+        <h1 class="fade-in">Neal Kapadia</h1>
+        <p class="hero-subtitle fade-in" style="animation-delay: 0.2s;">Computer Engineering Student at UT Dallas</p>
+        <p class="fade-in" style="animation-delay: 0.4s;">Passionate about integrating technology and healthcare</p>
+        <a href="#contact" class="btn btn-primary fade-in pulse" style="animation-delay: 0.6s;">Get in Touch</a>
+      </section>
+
+      <!-- About Section -->
+      <section id="about">
+        <h2 class="reveal">About Me</h2>
+        <div class="about-content">
+          <p class="reveal">I'm a Computer Engineering student at UT Dallas with a Biology minor, driven to revolutionize healthcare through technology. My unique blend of technical expertise and biological understanding allows me to bridge the gap between these two fields.</p>
+          <p class="reveal">As an aspiring physician with a strong background in Computer Engineering, I am focused on integrating AI into medical research and diagnostics. I'm passionate about using data science and computational methods to improve patient care, imaging, and disease modeling.</p>
+          <div class="skills reveal">
+            <h3>Technical Skills</h3>
+            <div class="card-container">
+              <div class="card reveal">
+                <h4 class="card-title">Programming Languages</h4>
+                <p class="card-content">Python, C/C++, SQL, Java, Verilog, MIPS Assembly Language, Javascript</p>
+              </div>
+              <div class="card reveal">
+                <h4 class="card-title">Frameworks</h4>
+                <p class="card-content">React.js, Flask, Django, Tailwind CSS</p>
+              </div>
+              <div class="card reveal">
+                <h4 class="card-title">Libraries</h4>
+                <p class="card-content">Pandas, Numpy, Scikit-learn, Pytorch, Matplotlib</p>
+              </div>
+              <div class="card reveal">
+                <h4 class="card-title">Developer Tools</h4>
+                <p class="card-content">Git, Jira, VS Code</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience">
+        <h2 class="reveal">Experience & Education</h2>
+        <div class="edu-section reveal">
+          <h3>Education</h3>
+          <div class="card">
+            <h4 class="card-title">University of Texas at Dallas</h4>
+            <p class="card-subtitle">Bachelor of Science in Computer Engineering, Minor in Biology | August 2023 – May 2027</p>
+            <p class="card-content">Academic Excellence Scholarship – Full-ride recipient | GPA: 3.856</p>
+          </div>
+        </div>
+        <div class="work-section reveal">
+          <h3>Work Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item timeline-left">
+              <div class="timeline-content">
+                <h4>Software Engineering Intern</h4>
+                <h5>Priro Systems Inc. | June 2024 – August 2024</h5>
+                <ul>
+                  <li>Built an AI-driven data pipeline that reduced processing time by 90%</li>
+                  <li>Developed full-stack applications with Django & React to streamline data visualization</li>
+                  <li>Contributed to API development, system architecture, & cloud deployment in an Agile team</li>
+                  <li>Applied machine learning techniques to optimize data processing workflows</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item timeline-right">
+              <div class="timeline-content">
+                <h4>Undergraduate Researcher</h4>
+                <h5>Laisuo Research Group | October 2024 – Present</h5>
+                <ul>
+                  <li>Conducting computational modeling to analyze battery electrolyte performance & degradation patterns</li>
+                  <li>Developing Python & MATLAB scripts to process experimental data & generate visualization models</li>
+                  <li>Assisting in machine learning research to predict capacity retention & optimize battery efficiency</li>
+                </ul>
+              </div>
+            </div>
+            <div class="timeline-item timeline-left">
+              <div class="timeline-content">
+                <h4>Biotech Club Researcher</h4>
+                <h5>Etched Quality Care | January 2025 – Present</h5>
+                <ul>
+                  <li>Designing an AI-powered wearable to monitor real-time health metrics & predict cardiovascular risks</li>
+                  <li>Developing a project plan to integrate machine learning with biometric sensor data</li>
+                  <li>Collaborating with engineers & healthcare professionals to enhance medical feasibility</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects">
+        <h2 class="reveal">Projects</h2>
+        <div class="filter-buttons reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ai">AI/ML</button>
+          <button class="filter-btn" data-filter="web">Web Dev</button>
+          <button class="filter-btn" data-filter="hardware">Hardware</button>
+        </div>
+        <div class="card-container">
+          <div class="card reveal" data-category="ai">
+            <h4 class="card-title">DeepSkin</h4>
+            <p class="card-subtitle">Axxess Hackathon | Flask, Computer Vision, React</p>
+            <p class="card-content">AI-powered web application that detects skin diseases from user-uploaded images using a deep learning model trained with PyTorch. Fine-tuned a pre-trained computer vision model on a Kaggle skin disease dataset.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+          <div class="card reveal" data-category="ai">
+            <h4 class="card-title">SummarizeIt</h4>
+            <p class="card-subtitle">Python, Bart AI</p>
+            <p class="card-content">Text summarization tool powered by Bart AI, a model fine-tuned on academic journals from Hugging Face. Implemented rigorous accuracy checks to ensure high-quality summaries.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+          <div class="card reveal" data-category="web">
+            <h4 class="card-title">ToDo List</h4>
+            <p class="card-subtitle">Flask, React, Tailwind CSS</p>
+            <p class="card-content">Full-stack to-do list application using Flask for the backend and React for the frontend. Implemented CRUD functionality for managing tasks in real-time.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+          <div class="card reveal" data-category="hardware">
+            <h4 class="card-title">Auditorium Reservation System</h4>
+            <p class="card-subtitle">C++, Data Structures, Algorithms</p>
+            <p class="card-content">Implemented a HashMap data structure to efficiently store and retrieve customer information. Designed a doubly linked list to represent and manage the auditorium seating arrangement.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+          <div class="card reveal" data-category="ai">
+            <h4 class="card-title">Battery Life Prediction Model</h4>
+            <p class="card-subtitle">Python, Pytorch, Bayesian Optimization</p>
+            <p class="card-content">Deep learning model using PyTorch to predict battery cycle life and energy density. Integrated Bayesian Optimization to suggest optimal experimental parameters.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+          <div class="card reveal" data-category="ai">
+            <h4 class="card-title">MockAI</h4>
+            <p class="card-subtitle">C++</p>
+            <p class="card-content">C++ program to generate text based on character distributions, tracking occurrences of letters, spaces, and newline characters.</p>
+            <a href="https://github.com/nealkapadia" class="btn btn-primary">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Section -->
+      <section id="research">
+        <h2 class="reveal">Research & Certifications</h2>
+        <div class="research-section reveal">
+          <h3>Research</h3>
+          <div class="card">
+            <h4 class="card-title">Laisuo Research Group</h4>
+            <p class="card-subtitle">Python, MATLAB, Machine Learning | October 2024 – Present</p>
+            <p class="card-content">Focused on Liquid Electrolyte Development to improve battery capacity retention, rate performance, and safety. Applied machine learning to model and optimize electrolyte compositions, reducing reliance on trial-and-error methods.</p>
+          </div>
+        </div>
+        <div class="certifications-section reveal">
+          <h3>Certifications</h3>
+          <div class="card-container">
+            <div class="card">
+              <h4 class="card-title">BLS for healthcare providers</h4>
+              <p class="card-subtitle">American Heart Association</p>
+            </div>
+            <div class="card">
+              <h4 class="card-title">EMT – Basic Certification</h4>
+              <p class="card-subtitle">RC Health Services (Expected May 2025)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities Section -->
+      <section id="activities">
+        <h2 class="reveal">Extracurricular Activities</h2>
+        <div class="card-container">
+          <div class="card reveal">
+            <h4 class="card-title">Global Health CPR</h4>
+            <p class="card-subtitle">Teaching Assistant, Member | January 2025 – Present</p>
+            <p class="card-content">Assisting in organizing and leading CPR training events in underserved communities. Contributing to the mission of providing free and accessible CPR education to everyone.</p>
+          </div>
+          <div class="card reveal">
+            <h4 class="card-title">UT Dallas Tennis Club</h4>
+            <p class="card-subtitle">Competitive Member | August 2023 – Present</p>
+            <p class="card-content">Participate in social and competitive tennis tournaments across Texas, improving strategic thinking and teamwork.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2 class="reveal">Contact & Resume</h2>
+        <div class="contact-resume-container">
+          <div class="contact-info reveal">
+            <h3>Contact Me</h3>
+            <p><i class="fas fa-envelope"></i> nrk220003@utdallas.edu</p>
+            <p><i class="fas fa-phone"></i> 972-979-6413</p>
+            <div class="social-links">
+              <a href="https://linkedin.com/in/nealkapadia" target="_blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/nealkapadia" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="https://nealkapadia.netlify.app/" target="_blank"><i class="fas fa-globe"></i></a>
+            </div>
+          </div>
+          <div class="resume-section reveal">
+            <h3>Download Resume</h3>
+            <p>Get a detailed overview of my experience and skills</p>
+            <a href="#" class="btn btn-primary download-btn">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </div>
+    
+    <button id="backToTop" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
