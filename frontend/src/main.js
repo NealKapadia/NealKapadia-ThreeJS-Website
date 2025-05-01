@@ -38,7 +38,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Cursor effects for interactive elements
-document.querySelectorAll('a, button, .card, .theme-toggle, .filter-btn, .back-to-top').forEach(element => {
+document.querySelectorAll('a, button, .card, .theme-toggle, .filter-btn, .back-to-top, .mobile-nav-toggle, .mobile-menu a').forEach(element => {
   element.addEventListener('mouseenter', () => {
     cursor.classList.add('cursor-hover');
     
@@ -388,31 +388,6 @@ function addImageToScene(imagePath, position, scale = 1, rotation = { x: 0, y: 0
   
   return imageMesh;
 }
-
-// Example usage:
-// You can uncomment and modify these lines to add images to your scene
-
-/* 
-// Add a floating profile image
-const profileImage = addImageToScene(
-  '/images/profile.jpg',  // Path to your image file relative to the public folder
-  { x: -10, y: 5, z: -5 }, // Position in 3D space
-  5,                       // Scale (size)
-  { x: 0, y: Math.PI / 4, z: 0 } // Rotation
-);
-
-// Add project screenshots
-const projectImages = [
-  { path: '/images/project1.jpg', position: { x: 15, y: 0, z: -10 } },
-  { path: '/images/project2.jpg', position: { x: 12, y: -5, z: -8 } },
-  { path: '/images/project3.jpg', position: { x: 18, y: 5, z: -12 } }
-];
-
-// Add each project image to the scene
-const projectImageMeshes = projectImages.map(img => 
-  addImageToScene(img.path, img.position, 4, { x: 0, y: -Math.PI / 6, z: 0 })
-);
-*/
 
 // Interactive mouse trail in 3D space
 const mouseTrailPoints = [];
@@ -1140,30 +1115,213 @@ function updateExplosions(delta) {
   }
 }
 
-// Animation loop
+// Mobile menu functionality
+const mobileNavToggle = document.getElementById('mobileNavToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileNavToggle.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+  
+  // Change icon based on menu state
+  const icon = mobileNavToggle.querySelector('i');
+  if (mobileMenu.classList.contains('active')) {
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-times');
+  } else {
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  }
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    const icon = mobileNavToggle.querySelector('i');
+    icon.classList.remove('fa-times');
+    icon.classList.add('fa-bars');
+  });
+});
+
+// Set a simple background color instead of background image
+function setupBackground() {
+  // Set a plain background color
+  scene.background = new THREE.Color(0x0f0f1e);
+}
+
+// Add images positioned as static interactive elements
+function addStaticImages() {
+  const images = [];
+  const imagePoles = [];
+
+  // Project image paths
+  const projectImagePaths = [
+    '/images/MockAI.png',
+    '/images/Battery Life picture.png',
+    '/images/ToDoList.png',
+    '/images/personal_website.jpg',
+    '/images/prirosystems.png',
+    '/images/Sparse_matrix_calculator icon.webp',
+    '/images/SummarizeIt_icon.jpg',
+    '/images/Verilog.png'
+  ];
+  
+  // Create interactive images on poles
+  projectImagePaths.forEach((path, index) => {
+    // Create a group for each image + pole
+    const imageGroup = new THREE.Group();
+    scene.add(imageGroup);
+    imagePoles.push(imageGroup);
+    
+    // Horizontal position in a grid - 4 columns, 2 rows
+    const row = Math.floor(index / 4);
+    const col = index % 4;
+    const spacing = 12;
+    
+    const x = (col - 1.5) * spacing;
+    const y = row === 0 ? 8 : -8;  // Top or bottom row
+    const z = -30;  // Fixed distance from camera
+    
+    // Position the group
+    imageGroup.position.set(x, y, z);
+    
+    // Create a vertical pole (cylinder)
+    const poleGeometry = new THREE.CylinderGeometry(0.2, 0.2, 30, 8);
+    const poleMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0x444444,
+      metalness: 0.8,
+      roughness: 0.2
+    });
+    
+    const pole = new THREE.Mesh(poleGeometry, poleMaterial);
+    pole.position.y = -15; // Position pole below the image
+    imageGroup.add(pole);
+    
+    // Create the image
+    const mesh = addImageToScene(
+      path,
+      { x: 0, y: 0, z: 0 },  // Center of the group
+      5,
+      { x: 0, y: 0, z: 0 }
+    );
+    
+    // Remove from scene and add to group
+    scene.remove(mesh);
+    imageGroup.add(mesh);
+    
+    // Make image interactive for spinning
+    mesh.userData.isInteractive = true;
+    mesh.userData.group = imageGroup;
+    
+    images.push(mesh);
+  });
+  
+  // Tech icons as static elements
+  const techIconPaths = [
+    '/images/python icon.jpeg',
+    '/images/react icon.png',
+    '/images/cpp icon.png',
+    '/images/django_pandas icon.jpeg'
+  ];
+  
+  // Create tech icons at bottom of screen
+  techIconPaths.forEach((path, i) => {
+    const spacing = 8;
+    const x = (i - 1.5) * spacing;
+    const y = -15;
+    const z = -25;
+    
+    // Create a group for each icon + pole
+    const iconGroup = new THREE.Group();
+    scene.add(iconGroup);
+    imagePoles.push(iconGroup);
+    
+    // Position the group
+    iconGroup.position.set(x, y, z);
+    
+    // Create a shorter pole for tech icons
+    const poleGeometry = new THREE.CylinderGeometry(0.15, 0.15, 10, 8);
+    const poleMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0x666666,
+      metalness: 0.8,
+      roughness: 0.2
+    });
+    
+    const pole = new THREE.Mesh(poleGeometry, poleMaterial);
+    pole.position.y = -5; // Position pole below the icon
+    iconGroup.add(pole);
+    
+    // Create the tech icon
+    const mesh = addImageToScene(
+      path,
+      { x: 0, y: 0, z: 0 },
+      3,
+      { x: 0, y: 0, z: 0 }
+    );
+    
+    // Remove from scene and add to group
+    scene.remove(mesh);
+    iconGroup.add(mesh);
+    
+    // Make icon interactive
+    mesh.userData.isInteractive = true;
+    mesh.userData.group = iconGroup;
+    
+    images.push(mesh);
+  });
+  
+  return { images, imagePoles };
+}
+
+// Add image interactivity for spinning
+function addImageInteractivity() {
+  // Event for spinning images on poles
+  window.addEventListener('click', (event) => {
+    // Calculate mouse position in normalized device coordinates
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    
+    // Update the raycaster
+    raycaster.setFromCamera(mouse, camera);
+    
+    // Find intersecting objects
+    const intersects = raycaster.intersectObjects(scene.children, true);
+    
+    if (intersects.length > 0) {
+      // Try to find the first interactive object
+      for (let i = 0; i < intersects.length; i++) {
+        const object = intersects[i].object;
+        
+        // Check if this is an interactive image
+        if (object.userData.isInteractive) {
+          // Get the group (image + pole)
+          const group = object.userData.group;
+          
+          // Animate the spin
+          gsap.to(group.rotation, {
+            y: group.rotation.y + Math.PI * 2,
+            duration: 1.5,
+            ease: 'elastic.out(1, 0.3)'
+          });
+          
+          break;
+        }
+      }
+    }
+  });
+}
+
+// Setup scene with only essential elements
+setupBackground();
+const { images, imagePoles } = addStaticImages();
+addImageInteractivity();
+
+// Update animation loop (simplified)
 function animate() {
   requestAnimationFrame(animate);
-  const delta = clock.getDelta();
   
   // Update controls
   controls.update();
-  
-  // Update animations
-  animateDNA();
-  animateTechIcons();
-  animateTorus();
-  animateParticles();
-  updateMouseTrail();
-  
-  // Rotate galaxies
-  galaxies.forEach((galaxy, i) => {
-    galaxy.rotation.y += 0.0002 * (i + 1);
-    galaxy.rotation.z += 0.0001 * (i + 1);
-  });
-  
-  // Update missile & explosion systems
-  updateMissiles(delta);
-  updateExplosions(delta);
   
   // Render
   renderer.render(scene, camera);
@@ -1191,3 +1349,18 @@ window.addEventListener('scroll', () => {
     showAchievement('Journey Complete', 'You\'ve explored Neal\'s entire portfolio!');
   }
 });
+
+// Help for running the development server
+console.log(`
+=================================================
+Running the app in PowerShell:
+1. First navigate to the frontend directory:
+   cd frontend
+   
+2. Then run the development server:
+   npm run dev
+
+NOTE: In PowerShell, you cannot use && to combine commands.
+You must run them separately as shown above.
+=================================================
+`);
